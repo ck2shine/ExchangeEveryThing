@@ -133,11 +133,11 @@
 				45C5DEAB2499C45A00F1B533 /* Utilities */,
 				45C5DEAA2499C45000F1B533 /* ViewControllers */,
 				45C5DE7A2499BBFA00F1B533 /* AppDelegate.swift */,
+				45C5DEC92499F61D00F1B533 /* AppCoordinator.swift */,
 				45C5DE7C2499BBFA00F1B533 /* SceneDelegate.swift */,
 				45C5DE832499BBFB00F1B533 /* Assets.xcassets */,
 				45C5DE852499BBFB00F1B533 /* LaunchScreen.storyboard */,
 				45C5DE882499BBFB00F1B533 /* Info.plist */,
-				45C5DEC92499F61D00F1B533 /* AppCoordinator.swift */,
 			);
 			path = CurrencyExTool;
 			sourceTree = "<group>";

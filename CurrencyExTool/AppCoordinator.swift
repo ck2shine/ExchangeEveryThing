@@ -20,10 +20,10 @@ class AppCoordinator : Coordinator<UIViewController>{
     override func start() {
         super.start()
 
+        let mainPageVM = CurrencyMainPageVM()
+        let mainPageVC = CurrencyMainPageVC(viewModel: mainPageVM)
 
-
-
-//        let navigationVC = UINavigationController(rootViewController: )
-//        self.window?.rootViewController = navigationVC
+        let navigationVC = UINavigationController(rootViewController: mainPageVC)
+        self.window?.rootViewController = navigationVC
     }
 }
