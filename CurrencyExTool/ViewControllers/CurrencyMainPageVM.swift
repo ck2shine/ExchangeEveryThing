@@ -8,4 +8,10 @@
 import Foundation
 class CurrencyMainPageVM{
 
+        
+    init(taskManager : currencyMainInjectProtocol) {        
+        taskManager.fetchCurrencyList {
+            
+        }
+    }
 }

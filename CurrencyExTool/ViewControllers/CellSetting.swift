@@ -1,5 +1,5 @@
 //
-//  CurrencySelectVM.swift
+//  CellSetting.swift
 //  CurrencyExTool
 //
 //  Created by Shine on 2020/6/17.
@@ -7,6 +7,7 @@
 //
 
 import Foundation
-class CurrencySelectVM : CurrencyRowType{
-    
+
+protocol CellSettingProtocol {
+    func setupCell(_ viewModel : CurrencyRowType)
 }

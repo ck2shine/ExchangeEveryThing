@@ -1,5 +1,5 @@
 //
-//  CurrencySelectVM.swift
+//  LiveCurrency.swift
 //  CurrencyExTool
 //
 //  Created by Shine on 2020/6/17.
@@ -7,6 +7,11 @@
 //
 
 import Foundation
-class CurrencySelectVM : CurrencyRowType{
+
+struct LiveCurrency : APIResponse {
+    var success: Bool
+    
+    var error: APIError?
+    
     
 }

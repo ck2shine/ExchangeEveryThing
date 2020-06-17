@@ -2,7 +2,6 @@
 //  AppCoordinator.swift
 //  CurrencyExTool
 //
-//  Created by i9400503 on 2020/6/17.
 //  Copyright © 2020 Shine. All rights reserved.
 //
 
@@ -18,12 +17,14 @@ class AppCoordinator : Coordinator<UIViewController>{
     }
 
     override func start() {
-        super.start()
-
-        let mainPageVM = CurrencyMainPageVM()
-        let mainPageVC = CurrencyMainPageVC(viewModel: mainPageVM)
-
-        let navigationVC = UINavigationController(rootViewController: mainPageVC)
+        
+        let navigationVC = UINavigationController()
+        let dependency = CurrencyMainDependency()
+        let mainPageCoordinator = CurrencyMainPageCoordinator(navigationVC , dependency: dependency)
+              
         self.window?.rootViewController = navigationVC
+        startChildCoordinator(coordinator: mainPageCoordinator)
+        
+        super.start()
     }
 }

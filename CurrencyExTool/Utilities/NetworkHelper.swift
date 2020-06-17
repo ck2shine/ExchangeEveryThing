@@ -2,30 +2,23 @@
 //  NetworkHelper.swift
 //  CurrencyExTool
 //
+//  Created by Shine on 2020/6/18.
 //  Copyright © 2020 Shine. All rights reserved.
 //
 
 import Foundation
-
-class NetworkHelper {
-
-    //MARK: Fetch API from network
-    final class func fetchReqeuset(_ url : URL , param : [String:String]? = nil,  complete comepleteHandler : ()->()){
-
-        var request = URLRequest(url: url)
-
-        //set paramaters
-        if let param = param{
-
-            var urlComponents = URLComponents()
-            var queryItem = [URLQueryItem]()
-
-            param.forEach { (key ,value) in
-                let eachQueryItem  = URLQueryItem(name: key, value: value)
-                queryItem.append(eachQueryItem)
+class NetworkHelper<T:Codable>{
+    
+    final class func fetch(_ url : URL , param : [String:String] , complete : @escaping (Result<T,Error>)->()){
+        NetworkManager.shared.fetchReqeuset(url, param: param) { (data , error) in
+            let decoder = JSONDecoder()
+            
+            if let data = data , let object = try? decoder.decode(T.self, from: data) {
+                
+                complete(.success(object))
+            }else{
+                complete(.failure(error))
             }
-            urlComponents.queryItems = queryItem
-            request.httpBody = urlComponents.query?.data(using: .utf8)
         }
     }
 }

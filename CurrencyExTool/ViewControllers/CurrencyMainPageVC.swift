@@ -11,6 +11,8 @@ import UIKit
 class CurrencyMainPageVC: UIViewController {
 
 
+    weak final var delegate : MainPagePresentDelegate?
+    
     private let viewModel : CurrencyMainPageVM
 
        init(viewModel : CurrencyMainPageVM) {
@@ -28,7 +30,13 @@ class CurrencyMainPageVC: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func convertCurButtonAction(_ sender: Any) {
+        delegate?.presentToNextVC(.currencyRateList(""))
+    }
+    @IBAction func baseCurSelectButtonAction(_ sender: Any) {
+        delegate?.presentToNextVC(.currencySelection)
+    }
+    
 
 
 }
