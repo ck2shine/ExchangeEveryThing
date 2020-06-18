@@ -13,7 +13,13 @@ enum ENVIRONMENT{
 }
 
 class EnvironmentSetting{
-    
+
+    static var defaultCurrency = "USD"
+
+    static var RefreshTime = 30
+
+    static var RefreshTimeKey = "RefreshTimeKey"
+
     //MARK: current environment Type
     static var ENV_TYPE : ENVIRONMENT{
         #if ENV_DEBUG
@@ -68,5 +74,12 @@ class EnvironmentSetting{
         }
         
         return url
+    }
+}
+
+//MARK: file variables
+extension  EnvironmentSetting{
+    static var localCurrencyFileName : String{
+        return "currencyData.txt"
     }
 }

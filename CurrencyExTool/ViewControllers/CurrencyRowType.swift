@@ -10,3 +10,7 @@ import Foundation
 protocol CurrencyRowType {
     
 }
+
+protocol CellIsAbleToPress {
+    var pressAction : (()->())?{get set}
+}

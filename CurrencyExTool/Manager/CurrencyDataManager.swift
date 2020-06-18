@@ -8,5 +8,9 @@
 
 import Foundation
 class CurrencyDataManager : currencyDataInjectProtocol{
-    var currencyListDatas: [currencyDataModel] = []
+    var selectCurrency: String = ""
+
+    var sendingData: String = ""
+
+    var currencyListDatas: [CurrencyDataModel] = []
 }

@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CurrencyMainPageVC" customModule="CurrencyExTool" customModuleProvider="target">
             <connections>
+                <outlet property="AmountLabel" destination="MJ5-w9-pOS" id="f65-DA-9qb"/>
+                <outlet property="CurrencyButton" destination="aut-zf-z1P" id="sgT-Py-qRx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,11 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="9ei-j6-rko" userLabel="InformationView">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="9ei-j6-rko" userLabel="InformationView">
                     <rect key="frame" x="0.0" y="44" width="414" height="325"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OV-aJ-OSR" userLabel="SourceInfoMactionView">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="17"/>
+                            <rect key="frame" x="8" y="20" width="398" height="17"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Source : currencylayer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3y-qp-Xcc">
                                     <rect key="frame" x="0.0" y="0.0" width="145" height="17"/>
@@ -31,36 +33,43 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refresh : 2020-06017 17:00:12" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijY-H5-HwM">
-                                    <rect key="frame" x="145" y="0.0" width="269" height="17"/>
+                                    <rect key="frame" x="145" y="0.0" width="253" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                         </stackView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fYr-ps-4FE">
+                            <rect key="frame" x="8" y="57" width="398" height="115"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        </view>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8p-xm-cFQ">
-                            <rect key="frame" x="0.0" y="17" width="414" height="40"/>
+                            <rect key="frame" x="8" y="192" width="398" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9,999,999,999.1234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJ5-w9-pOS">
-                                    <rect key="frame" x="0.0" y="0.0" width="384" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="368" height="40"/>
                                     <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="LJn-FS-fmg"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <real key="value" value="1"/>
+                                            <real key="value" value="4"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="1"/>
+                                            <real key="value" value="2"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ElK-6Z-gZM">
-                                    <rect key="frame" x="384" y="0.0" width="30" height="40"/>
+                                    <rect key="frame" x="368" y="0.0" width="30" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="wHl-mc-OXX"/>
                                     </constraints>
@@ -68,16 +77,22 @@
                                     <state key="normal" title="X">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </state>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="Uou-ID-fgw"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dG5-18-W4D">
-                            <rect key="frame" x="0.0" y="57" width="414" height="268"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dG5-18-W4D">
+                            <rect key="frame" x="8" y="252" width="398" height="65"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kU-g8-l7a">
-                                    <rect key="frame" x="0.0" y="0.0" width="337" height="268"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="258" height="65"/>
                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="65" id="rye-RZ-KNQ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                     <state key="normal" title="Convert">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
@@ -90,21 +105,36 @@
                                         <action selector="convertCurButtonAction:" destination="-1" eventType="touchUpInside" id="sOp-sI-h8f"/>
                                     </connections>
                                 </button>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wl2-lr-9V9">
-                                    <rect key="frame" x="337" y="0.0" width="77" height="268"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Wl2-lr-9V9">
+                                    <rect key="frame" x="298" y="0.0" width="100" height="65"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base CUR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACZ-zr-8xq">
-                                            <rect key="frame" x="0.0" y="0.0" width="77" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Base Currency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACZ-zr-8xq">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="16"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aut-zf-z1P">
-                                            <rect key="frame" x="0.0" y="20.5" width="77" height="247.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <rect key="frame" x="0.0" y="21" width="100" height="44"/>
+                                            <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="asf-hJ-hA0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                             <state key="normal" title="USD">
-                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="2"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="baseCurSelectButtonAction:" destination="-1" eventType="touchUpInside" id="qeh-0A-KKV"/>
                                             </connections>
@@ -114,15 +144,16 @@
                             </subviews>
                         </stackView>
                     </subviews>
+                    <edgeInsets key="layoutMargins" top="20" left="8" bottom="8" right="8"/>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-VM-i5Y" userLabel="NumberPadView">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="yxn-VM-i5Y" userLabel="NumberPadView">
                     <rect key="frame" x="0.0" y="369" width="414" height="493"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xZ0-Gi-MVu">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
+                            <rect key="frame" x="8" y="8" width="398" height="91.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oSs-qT-pbW">
-                                    <rect key="frame" x="0.0" y="0.0" width="204.5" height="99"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="196.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="C">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -138,9 +169,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="Eor-Ai-LEa"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mn9-T9-Mp9">
-                                    <rect key="frame" x="209.5" y="0.0" width="204.5" height="99"/>
+                                    <rect key="frame" x="201.5" y="0.0" width="196.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="Del">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -156,14 +190,17 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="HPP-f9-aSV"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Z3S-q3-SRi">
-                            <rect key="frame" x="0.0" y="99" width="414" height="98.5"/>
+                            <rect key="frame" x="8" y="104.5" width="398" height="91.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbA-wP-zzb">
-                                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="1">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -179,9 +216,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="06Q-lx-RLS"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJa-5a-9mq">
-                                    <rect key="frame" x="139.5" y="0.0" width="135" height="98.5"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="129" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="2">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -197,9 +237,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="IZK-9m-sld"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JLf-HG-7hv">
-                                    <rect key="frame" x="279.5" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="268.5" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="3">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -215,14 +258,17 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="mMa-eW-0KZ"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="heZ-Ln-cJ3">
-                            <rect key="frame" x="0.0" y="197.5" width="414" height="98.5"/>
+                            <rect key="frame" x="8" y="201" width="398" height="91.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z0Q-Dx-gZ7">
-                                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="4">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -238,9 +284,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="q8w-ni-Zer"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iiw-S2-dcp">
-                                    <rect key="frame" x="139.5" y="0.0" width="135" height="98.5"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="129" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="5">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -256,9 +305,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="Tcm-0i-h1i"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpQ-Lk-gK2">
-                                    <rect key="frame" x="279.5" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="268.5" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="6">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -274,14 +326,17 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="jOo-mS-h3L"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y2c-1n-Ynq">
-                            <rect key="frame" x="0.0" y="296" width="414" height="98.5"/>
+                            <rect key="frame" x="8" y="297.5" width="398" height="91"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv8-EB-PYC">
-                                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="91"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="7">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -297,9 +352,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="p5p-3M-bmM"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOa-PX-gi7">
-                                    <rect key="frame" x="139.5" y="0.0" width="135" height="98.5"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="129" height="91"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="8">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -315,9 +373,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="Ppn-tr-dOk"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDB-r5-3Tj">
-                                    <rect key="frame" x="279.5" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="268.5" y="0.0" width="129.5" height="91"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="9">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -333,14 +394,17 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="Aha-Fi-0f2"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E2s-eK-w8b">
-                            <rect key="frame" x="0.0" y="394.5" width="414" height="98.5"/>
+                            <rect key="frame" x="8" y="393.5" width="398" height="91.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BzL-3k-ODi">
-                                    <rect key="frame" x="0.0" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="0">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -356,9 +420,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="IG0-kz-Gkm"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o15-wU-v7g">
-                                    <rect key="frame" x="139.5" y="0.0" width="135" height="98.5"/>
+                                    <rect key="frame" x="134.5" y="0.0" width="129" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                     <state key="normal" title="00">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -374,9 +441,12 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="FJA-f6-zOY"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BYG-25-y31">
-                                    <rect key="frame" x="279.5" y="0.0" width="134.5" height="98.5"/>
+                                    <rect key="frame" x="268.5" y="0.0" width="129.5" height="91.5"/>
                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="28"/>
                                     <state key="normal" title=".">
                                         <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -392,10 +462,14 @@
                                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="NumberPadAction:" destination="-1" eventType="touchUpInside" id="eiC-pg-ZEO"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
                     </subviews>
+                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

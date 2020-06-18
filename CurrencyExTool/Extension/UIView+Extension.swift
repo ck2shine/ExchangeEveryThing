@@ -37,3 +37,18 @@ extension UIView{
         set { layer.borderColor = newValue?.cgColor }
     }
 }
+
+protocol NibMakeInstantiable {}
+
+extension UIView : NibMakeInstantiable{}
+
+extension NibMakeInstantiable where Self : UIView{
+    static func instanceFromNib() -> Self{
+        if let view = Bundle(for: self).loadNibNamed(String(describing: self), owner: nil, options: nil)?[0] as? Self{
+            return view
+        }else{
+            assert(false," The nib name \(self) is not found")
+            return Self()
+        }
+    }
+}

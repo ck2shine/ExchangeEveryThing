@@ -8,12 +8,14 @@
 
 import Foundation
 
-protocol currencyDataModel {    
+protocol CurrencyDataModel {
 }
 
 protocol currencyDataInjectProtocol {
-    var currencyListDatas : [currencyDataModel]{get set}
+    var currencyListDatas : [CurrencyDataModel]{get set}
+    var sendingData : String{get set}
+    var selectCurrency : String{get set}
 }
 struct CurrencyDataDependency {
-    var currencyDataManager : currencyDataInjectProtocol
+    var currencyDataManager = CurrencyDataManager()
 }

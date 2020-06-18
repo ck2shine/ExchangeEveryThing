@@ -8,8 +8,8 @@
 
 import Foundation
 protocol currencyMainInjectProtocol {
-    func fetchCurrencyList(complete completeHandler : @escaping ()->())
-    func fetchCurrencyData(complete completeHandler : @escaping ()->())
+    func fetchCurrencyList(complete completeHandler : @escaping (Result<[CurrencyNameModel],CurrenyFetchError>)->())
+    func fetchCurrencyData(complete completeHandler : @escaping (Result<[RateModel],CurrenyFetchError>)->())
 }
 
 struct CurrencyMainDependency {

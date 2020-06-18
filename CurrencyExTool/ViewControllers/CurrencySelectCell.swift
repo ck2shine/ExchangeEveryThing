@@ -9,20 +9,57 @@
 import UIKit
 
 class CurrencySelectCell: UITableViewCell ,CellSettingProtocol {
-          
+    @IBOutlet weak var CurFullNameLabel: UILabel!
+
+    @IBOutlet weak var CurShorNameLabel: UILabel!
+    
+    var viewModel : CurrencySelectVM?
+
+
+    private lazy var selectedBackGroundView : UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        return view
+    }()
+
     func setupCell(_ viewModel: CurrencyRowType) {
-        
+        if let viewModel = viewModel as? CurrencySelectVM {
+            self.viewModel = viewModel
+        }
+
+        bindUIs()
+
     }
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        selectedBackgroundView = selectedBackGroundView
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+
+    final private func bindUIs(){
+        //remove first, because if reuse cells
+        removeAllbindins()
+
+        self.viewModel?.curFullName.binding(listener: { [unowned self]text in
+
+            self.CurFullNameLabel.text = text
+
+        })
+        self.viewModel?.curShortName.binding(listener: { [unowned self]text in
+
+            self.CurShorNameLabel.text = text
+
+        })
+    }
+
+    final private func removeAllbindins(){
+        self.viewModel?.curFullName.removeAllBinding()
+        self.viewModel?.curShortName.removeAllBinding()
     }
     
 }

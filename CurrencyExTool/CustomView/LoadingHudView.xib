@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bOc-lJ-Ui7" customClass="LoadingHudView" customModule="CurrencyExTool" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2yy-ut-prc">
+                    <rect key="frame" x="110.66666666666669" y="403.33333333333331" width="192.66666666666663" height="89.666666666666686"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="iuh-F5-XGK">
+                            <rect key="frame" x="0.0" y="0.0" width="192.66666666666666" height="89.666666666666671"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Mj9-A2-LI0">
+                                    <rect key="frame" x="8" y="8" width="176.66666666666666" height="37"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4mB-ok-twb">
+                                            <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6cm-lV-wrz">
+                                            <rect key="frame" x="56.999999999999979" y="0.0" width="119.66666666666669" height="37"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                            <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Currency List" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbw-Kk-2HI">
+                                    <rect key="frame" x="8" y="59.999999999999993" width="176.66666666666666" height="21.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                    <color key="textColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <constraints>
+                        <constraint firstItem="iuh-F5-XGK" firstAttribute="top" secondItem="2yy-ut-prc" secondAttribute="top" id="d7r-9g-A4C"/>
+                        <constraint firstAttribute="bottom" secondItem="iuh-F5-XGK" secondAttribute="bottom" id="e8m-HM-kde"/>
+                        <constraint firstItem="iuh-F5-XGK" firstAttribute="leading" secondItem="2yy-ut-prc" secondAttribute="leading" id="jRu-I9-D9s"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="250" id="kLh-Lp-Z6e"/>
+                        <constraint firstAttribute="trailing" secondItem="iuh-F5-XGK" secondAttribute="trailing" id="nTL-Bg-OLm"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="2yy-ut-prc" firstAttribute="centerX" secondItem="bOc-lJ-Ui7" secondAttribute="centerX" id="5Hg-AA-WJz"/>
+                <constraint firstItem="2yy-ut-prc" firstAttribute="centerY" secondItem="bOc-lJ-Ui7" secondAttribute="centerY" id="UeS-DZ-cYD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="VbN-wG-Zb8"/>
+            <connections>
+                <outlet property="loadingActivity" destination="4mB-ok-twb" id="4nf-nO-04M"/>
+                <outlet property="loadingMessageLabel" destination="Cbw-Kk-2HI" id="G2h-1J-vSM"/>
+                <outlet property="loadingTitleLabel" destination="6cm-lV-wrz" id="f2M-Q4-fos"/>
+            </connections>
+            <point key="canvasLocation" x="31.640624999999996" y="130.46875"/>
+        </view>
+    </objects>
+</document>

@@ -10,7 +10,6 @@ import Foundation
 protocol APIResponse :Codable {
     var success : Bool{get set}
     var error : APIError?{get set}
-    
 }
 
 struct APIError : Codable {
