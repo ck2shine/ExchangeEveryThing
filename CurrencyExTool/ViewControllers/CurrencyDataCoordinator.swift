@@ -11,6 +11,7 @@ import UIKit
 //MARK: CurrencyData Actions to Coordinator
 protocol CurrencyDataPresentDelegate : class {
     func didSelectCurrencyType(type : String)
+    func popWithoutAnyMove()
 }
 class CurrencyDataCoordinator : Coordinator<UINavigationController>{
     
@@ -35,6 +36,11 @@ class CurrencyDataCoordinator : Coordinator<UINavigationController>{
     }
 }
 extension CurrencyDataCoordinator : CurrencyDataPresentDelegate{
+    func popWithoutAnyMove() {
+         self.presenter?.popViewController(animated: true)
+        self.delegate?.stopAllCoordinatorFromChild()
+    }
+
     func didSelectCurrencyType(type: String) {
         self.presenter?.popViewController(animated: true)
         self.delegate?.didSelectedCurrency(type)

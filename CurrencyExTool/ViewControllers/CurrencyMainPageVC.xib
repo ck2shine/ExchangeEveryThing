@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="AmountLabel" destination="MJ5-w9-pOS" id="f65-DA-9qb"/>
                 <outlet property="CurrencyButton" destination="aut-zf-z1P" id="sgT-Py-qRx"/>
+                <outlet property="RefreshTimeLabel" destination="ijY-H5-HwM" id="Yj6-GS-dj7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

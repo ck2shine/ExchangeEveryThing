@@ -15,6 +15,7 @@ class CurrencyMainPageVC: UIViewController {
     
     private let viewModel : CurrencyMainPageVM
 
+    @IBOutlet weak var RefreshTimeLabel: UILabel!
     @IBOutlet weak var CurrencyButton: UIButton!
     @IBOutlet weak var AmountLabel: UILabel!
     init(viewModel : CurrencyMainPageVM) {
@@ -80,6 +81,22 @@ extension CurrencyMainPageVC{
                 self.CurrencyButton.setTitle(currency, for: .normal)
             }
         }
+
+        output.alertMessage.binding(trigger: false) {  [unowned self ] message in
+            if let message = message {
+                DispatchQueue.main.async {
+                    self.showAlert(message)
+                }
+            }
+        }
+
+        output.refreshTime.binding(trigger: false) {   [unowned self ] time in
+
+            DispatchQueue.main.async {
+                self.RefreshTimeLabel.text = time
+            }
+
+        }
     }
 
     final private func setupUIs(){
@@ -96,6 +113,6 @@ extension CurrencyMainPageVC{
 //MARK: navigationBar item Actions
 extension CurrencyMainPageVC{
     @objc final private func refreshFetchData(_ sender : UIBarButtonItem){
-         self.viewModel.inputs.timeCheckTrigger.value = ()
+        self.viewModel.inputs.timeCheckTrigger.value = ()
     }
 }

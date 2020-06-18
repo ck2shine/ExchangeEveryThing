@@ -17,6 +17,7 @@ enum MainPresentingType {
 //MARK: other ViewController back to mainPageViewController
 protocol MainPageActionDelegate : class {
     func didSelectedCurrency(_ currency : String)
+    func stopAllCoordinatorFromChild()
 }
 
 //MARK: mainPageViewController Actions to Coordinator
@@ -52,10 +53,10 @@ extension CurrencyMainPageCoordinator : MainPagePresentDelegate{
 
         switch type {
         case .currencySelection:
-            dataDependency.currencyDataManager.currencyListDatas = self.viewModel?.currencyList ?? []
+            dataDependency.currencyDataManager.currencyListDatas = self.viewModel?.currencyList.value ?? []
             dataDependency.currencyDataManager.sendingData = self.viewModel?.currentSelectCurrency.value ?? "USD"
         case .currencyRateList:
-            dataDependency.currencyDataManager.currencyListDatas = self.viewModel?.rateList ?? []
+            dataDependency.currencyDataManager.currencyListDatas = self.viewModel?.rateList.value ?? []
             dataDependency.currencyDataManager.sendingData = self.viewModel?.amount.value ?? "1999999"
             dataDependency.currencyDataManager.selectCurrency = self.viewModel?.currentSelectCurrency.value ?? "USD"
         }
@@ -69,7 +70,9 @@ extension CurrencyMainPageCoordinator : MainPagePresentDelegate{
 
 //MARK: other VC back to mainPageVC ev ent
 extension CurrencyMainPageCoordinator : MainPageActionDelegate{
-
+    func stopAllCoordinatorFromChild() {
+         self.stopAllChildCoordinator()
+    }
 
     func didSelectedCurrency(_ currency: String) {
         self.stopAllChildCoordinator()

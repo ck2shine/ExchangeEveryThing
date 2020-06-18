@@ -12,33 +12,63 @@ class CurrencyManPageTests: XCTestCase {
 
     class EmptyTaskManager: currencyMainInjectProtocol {
         func fetchCurrencyList(complete completeHandler: @escaping (Result<[CurrencyNameModel], CurrenyFetchError>) -> ()) {
-
+            DispatchQueue.main.async {
+                completeHandler(.success([]))
+            }
         }
 
         func fetchCurrencyData(complete completeHandler: @escaping (Result<[RateModel], CurrenyFetchError>) -> ()) {
-            
+            DispatchQueue.main.async {
+                completeHandler(.success([RateModel(sourceCUR: "USD", convertToCUR: "TWD", rate: 29.6)]))
+            }
         }
-
-
     }
+
+    private(set) var emptyManager: EmptyTaskManager!
+    private(set) var viewModel: CurrencyMainPageVM!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        emptyManager = EmptyTaskManager()
+        viewModel = CurrencyMainPageVM(taskManager: emptyManager)
     }
 
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_triggerInitTableDataList(){
+        let exp = expectation(description: "the data will be all empty")
+        viewModel.outputs.currencyList.binding(trigger: false) { list in
+            guard let list = list , list.count == 0 else{
+                return
+            }
+            exp.fulfill()
         }
+
+        viewModel.inputs.refreshDataTrigger.value = ()
+
+
+        wait(for: [exp], timeout: 0.5)
+    }
+
+    func test_RateListFetch(){
+        let exp = expectation(description: "RateList assert failed")
+
+        viewModel.outputs.rateList.binding(trigger: false) { list in
+            guard let list = list , list.count > 0 else{
+                DispatchQueue.main.async {
+                    XCTFail("list Should not empty")
+                    exp.fulfill()
+                }
+                return
+            }
+
+            let model = list.first!
+            DispatchQueue.main.async {
+                XCTAssertEqual(model.convertToCUR, "TWD")
+                XCTAssertEqual(model.sourceCUR, "USD")
+                    exp.fulfill()
+            }
+
+
+        }
+        viewModel.inputs.refreshDataTrigger.value = ()
+        wait(for: [exp], timeout: 0.5)
     }
 }

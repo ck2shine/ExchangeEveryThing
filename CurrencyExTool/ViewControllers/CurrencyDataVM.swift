@@ -39,7 +39,6 @@ class CurrencyDataVM :CurrencyDataFunctions , CurrencyDataInputs , CurrencyDataO
 
     //store properties
 
-
     init(taskManager : currencyDataInjectProtocol){
 
         inOutBinding(taskManager: taskManager)
@@ -126,16 +125,6 @@ extension CurrencyDataVM{
         }
 
         return rowViewModels
-    }
-
-
-    //MARK: USD to Other currency
-    /*
-     if currency is not USD , change the rate from USD Table
-     because free user is only able to fetch USD currency
-     */
-    final func tranferToOtherCurrencyFromUSD(){
-
     }
 }
 

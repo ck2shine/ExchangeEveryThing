@@ -16,9 +16,11 @@ class EnvironmentSetting{
 
     static var defaultCurrency = "USD"
 
-    static var RefreshTime = 30
+    static var RefreshTime = 1
 
     static var RefreshTimeKey = "RefreshTimeKey"
+
+    static var AuthKey = "0529dadcc5df6fe1ed172d2fd1ff8fcf"
 
     //MARK: current environment Type
     static var ENV_TYPE : ENVIRONMENT{

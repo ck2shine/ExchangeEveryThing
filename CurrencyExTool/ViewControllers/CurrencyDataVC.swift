@@ -36,8 +36,11 @@ class CurrencyDataVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.viewModel.tableDataTrigger.value = true
+
     }
-    
+    @objc func back(_ sender : UIBarButtonItem){
+        self.delegate?.popWithoutAnyMove()
+    }
 }
 
 extension CurrencyDataVC{
@@ -55,6 +58,10 @@ extension CurrencyDataVC{
         let currencyRateName =  String(describing: CurrencyRateCell.self)
 
         self.DataTableView.register(UINib(nibName:currencyRateName, bundle: Bundle(for: Self.self)), forCellReuseIdentifier: currencyRateName)
+
+        //navigation bar title
+        navigationItem.title = "Currency Data"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(_:)))
 
 
     }

@@ -18,6 +18,10 @@ protocol CurrencyMainPageOutpus {
     var loadingHudDisplay : Box<(String,String)>{get}
     var currentSelectCurrency : Box<String>{get}
     var amount : Box<String>{get}
+    var currencyList : Box<[CurrencyNameModel]>{get}
+    var rateList : Box<[RateModel]>{get}
+    var alertMessage : Box<String>{get}
+    var refreshTime : Box<String>{get}
 }
 
 protocol CurrencyMainPageFunctions {
@@ -42,9 +46,10 @@ class CurrencyMainPageVM : CurrencyMainPageFunctions , CurrencyMainPageInputs , 
     var loadingHudDisplay: Box<(String, String)> = Box(nil)
     var currentSelectCurrency : Box<String> = Box("USD")
     var amount : Box<String> = Box("")
-    //store Items
-    var currencyList : [CurrencyNameModel]?
-    var rateList : [RateModel]?
+    var currencyList : Box<[CurrencyNameModel]> =  Box([])
+    var rateList : Box<[RateModel]> = Box([])
+    var alertMessage : Box<String> = Box("")
+    var refreshTime : Box<String> = Box("")
 
     init(taskManager : currencyMainInjectProtocol) {
 
@@ -67,8 +72,8 @@ class CurrencyMainPageVM : CurrencyMainPageFunctions , CurrencyMainPageInputs , 
             }else{
                 let filePath = FileHelper.getFilePathForName(EnvironmentSetting.localCurrencyFileName)
                 let (localData , _ ) =   self.readJSONFile(filePath: filePath)
-                self.currencyList = localData?.listArray
-                self.rateList = localData?.rateArray
+                self.currencyList.value = localData?.listArray
+                self.rateList.value = localData?.rateArray
                 self.loadingHudDisplay.value = nil
             }
         }
@@ -79,9 +84,9 @@ class CurrencyMainPageVM : CurrencyMainPageFunctions , CurrencyMainPageInputs , 
             taskManager.fetchCurrencyList { result in
                 switch result{
                 case .success(let model):
-                    self.currencyList = model
+                    self.currencyList.value = model
                 case .failure(let error):
-                    break //TODO
+                    self.alertMessage.value = error.localizedDescription
                 }
                 group.leave()
             }
@@ -90,16 +95,16 @@ class CurrencyMainPageVM : CurrencyMainPageFunctions , CurrencyMainPageInputs , 
             taskManager.fetchCurrencyData { result in
                 switch result{
                 case .success(let model):
-                    self.rateList = model
+                    self.rateList.value = model
                 case .failure(let error):
-                    break //TODO
+                    self.alertMessage.value = error.localizedDescription
                 }
                 group.leave()
             }
 
             group.notify(queue: .main) {
                 self.loadingHudDisplay.value = nil
-                let localData = LocalStoreCurrency(rateArray: self.rateList ?? [], listArray: self.currencyList ?? [])
+                let localData = LocalStoreCurrency(rateArray: self.rateList.value ?? [], listArray: self.currencyList.value ?? [])
                 //write file to document
 
                 let filePath = FileHelper.getFilePathForName(EnvironmentSetting.localCurrencyFileName)
@@ -107,6 +112,11 @@ class CurrencyMainPageVM : CurrencyMainPageFunctions , CurrencyMainPageInputs , 
                 self.writeJSONFileToDocument(localData: localData , filePath: filePath)
                 //set Time
                 UserDefaults.standard.setValue(Date().timeIntervalSince1970, forKey: EnvironmentSetting.RefreshTimeKey)
+
+                let now = Date()
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                self.refreshTime.value =  dateFormatter.string(from: now)
             }
         }
 

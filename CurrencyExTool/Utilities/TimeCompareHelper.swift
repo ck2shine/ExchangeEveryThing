@@ -14,7 +14,6 @@ class TimeCompareHelper{
 
         let calender:Calendar = Calendar.current
         let components: DateComponents = calender.dateComponents([ .minute, .second], from: startTime, to: endTime)
-
         return  components.minute ?? 0  > limitMinutes
     }
 }

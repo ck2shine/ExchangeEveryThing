@@ -26,14 +26,18 @@ class CurrencyMainManager : currencyMainInjectProtocol{
     func fetchCurrencyList(complete completeHandler: @escaping (Result<[CurrencyNameModel],CurrenyFetchError>) -> ()) {
         
         var param = [String:String]()
-        param["access_key"] = "0529dadcc5df6fe1ed172d2fd1ff8fcf"
+        param["access_key"] = EnvironmentSetting.AuthKey
         param["format"] = "1"
 
         NetworkHelper<DataCurrencyList>.fetch(EnvironmentSetting.CUR_LIST, param: param) {
             switch $0{
             case .success(let model):
                 if model.success{
-                    completeHandler(.success(model.currencies))
+                    var sortedModel = model.currencies
+                    sortedModel.sort{m1,m2 in
+                        return m1.curCode.compare(m2.curCode,options: .literal) == .orderedAscending
+                    }
+                    completeHandler(.success(sortedModel))
                 }else if let error = model.error{
                     completeHandler(.failure(.responseError(error.code, error.info)))
                 }
@@ -46,15 +50,21 @@ class CurrencyMainManager : currencyMainInjectProtocol{
     
     func fetchCurrencyData(complete completeHandler: @escaping (Result<[RateModel],CurrenyFetchError>)->()) {
         var param = [String:String]()
-        param["access_key"] = "0529dadcc5df6fe1ed172d2fd1ff8fcf"
+        param["access_key"] = EnvironmentSetting.AuthKey
         param["format"] = "1"
-        param["currencies"] = "USD,TWD,JPY,AUD,EUR,GBP,PLN"
+        //        param["currencies"] = "USD,TWD,JPY,AUD,EUR,GBP,PLN"
 
         NetworkHelper<LiveCurrency>.fetch(EnvironmentSetting.CUR_RATE, param: param) {
             switch $0{
             case .success(let model):
                 if model.success{
-                    completeHandler(.success(model.quotes))
+                    var sortedModel = model.quotes
+                    sortedModel.sort{m1,m2 in
+                        return m1.convertToCUR.compare(m2.convertToCUR,options: .literal) == .orderedAscending
+                    }
+                    completeHandler(.success(sortedModel))
+
+
                 }else if let error = model.error{
                     completeHandler(.failure(.responseError(error.code, error.info)))
                 }

@@ -1,0 +1,11 @@
+//
+//  Debug.xcconfig
+//  CurrencyExTool
+//
+//  Copyright © 2020 Shine. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+ENVIRONMENT_FLAG = ENV_DEBUG
